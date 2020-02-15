@@ -2,7 +2,8 @@
   "functional-sidebar": {
     "Overview": [
       "functional/functional_index",
-      "functional/algebraic_structure"
+      "functional/algebraic_structure",
+      "functional/type_classes"
     ]
   },
   "about-sidebar": {

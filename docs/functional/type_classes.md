@@ -4,10 +4,12 @@ title:  "Type Classes"
 ---
 
 ***Type Classes Vs Algebraic Structures***
-ypeT classes are used to implement algebraic structures. 
+
+Type classes are used to implement algebraic structures. 
 They’re a language feature, rather than a mathematical concept.
 
 ***Type Class***
+
 Type classes are a way of doing polymorphism. 
 And they happen to be most convenient for building algebraic structures.
 
