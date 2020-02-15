@@ -1,0 +1,14 @@
+{
+  "functional-sidebar": {
+    "Overview": [
+      "functional/functional_index",
+      "functional/algebraic_structure"
+    ]
+  },
+  "about-sidebar": {
+      "About": [
+          "main_index",
+          "about/about_index"
+      ]
+  }
+}
