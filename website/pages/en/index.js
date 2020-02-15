@@ -97,7 +97,6 @@ class Index extends React.Component {
                 style={{textAlign: 'center'}}>
                 <h2>Welcome to Functional programming blog</h2>
                 <MarkdownBlock>
-                    Scala and functional programming blog.
                 </MarkdownBlock>
 
                 <h2>
