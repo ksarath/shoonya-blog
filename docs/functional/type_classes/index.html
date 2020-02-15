@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Type Classes · Shoonya Blog</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="***Type Classes Vs Algebraic Structures***"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Type Classes · Shoonya Blog"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ksarath.github.io/shoonya-blog/"/><meta property="og:description" content="***Type Classes Vs Algebraic Structures***"/><meta property="og:image" content="https://ksarath.github.io/shoonya-blog/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://ksarath.github.io/shoonya-blog/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/shoonya-blog/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100,"cornerOffset":100}
+          )
+        });
+        </script><script src="/shoonya-blog/js/scrollSpy.js"></script><link rel="stylesheet" href="/shoonya-blog/css/main.css"/><script src="/shoonya-blog/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/shoonya-blog/"><img class="logo" src="/shoonya-blog/img/navbar_brand2x.png" alt="Shoonya Blog"/><h2 class="headerTitleWithLogo">Shoonya Blog</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/shoonya-blog/docs/main_index" target="_self">Index</a></li><li class=""><a href="/shoonya-blog/docs/about/about_index" target="_self">About</a></li><li class="siteNavGroupActive"><a href="/shoonya-blog/docs/functional/functional_index" target="_self">Functional Concepts</a></li><li class=""><a href="api/index.html" target="_self">API</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Overview</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Overview</h3><ul class=""><li class="navListItem"><a class="navItem" href="/shoonya-blog/docs/functional/functional_index">Functional Programming Concepts</a></li><li class="navListItem"><a class="navItem" href="/shoonya-blog/docs/functional/algebraic_structure">Algebraic Structure</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/shoonya-blog/docs/functional/type_classes">Type Classes</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Type Classes</h1></header><article><div><span><p><strong><em>Type Classes Vs Algebraic Structures</em></strong></p>
+<p>Type classes are used to implement algebraic structures.
+They’re a language feature, rather than a mathematical concept.</p>
+<p><strong><em>Type Class</em></strong></p>
+<p>Type classes are a way of doing polymorphism.
+And they happen to be most convenient for building algebraic structures.</p>
+<p>A map type signature in Haskell</p>
+<pre><code class="hljs css language-haskell"><span class="hljs-comment">-- Type signature of map for arrays/lists.</span>
+<span class="hljs-title">map</span> :: (a -&gt; b) -&gt; [a] -&gt; [b]
+
+<span class="hljs-comment">-- Type signature of map for Maybe</span>
+<span class="hljs-title">map</span> :: (a -&gt; b) -&gt; <span class="hljs-type">Maybe</span> a -&gt; <span class="hljs-type">Maybe</span> b
+</code></pre>
+<p>Two different type signatures. Because the types are different, Haskell’s compiler can figure out which map to call.
+It can look at the arguments, figure out their types, and call the correct version.
+And so the two versions of map can exist side-by-side (polymorphism).</p>
+<p>Languages with this feature use it to create algebraic structures.
+We can say, for example, “I’m going to create a new instance of Functor. Here’s its map function.”
+In code, it might look like this:</p>
+<pre><code class="hljs css language-haskell"><span class="hljs-class"><span class="hljs-keyword">instance</span> <span class="hljs-type">Functor</span> <span class="hljs-type">List</span> <span class="hljs-keyword">where</span></span>
+    map :: (a -&gt; b) -&gt; [a] -&gt; [b]
+    map f xs = foldl (\x arr -&gt; arr ++ [f x]) [] xs
+</code></pre>
+<p>And we could declare Maybe a functor too:</p>
+<pre><code class="hljs css language-haskell"><span class="hljs-class"><span class="hljs-keyword">instance</span> <span class="hljs-type">Functor</span> <span class="hljs-type">Maybe</span> <span class="hljs-keyword">where</span></span>
+    map :: (a -&gt; b) -&gt; <span class="hljs-type">Maybe</span> a -&gt; <span class="hljs-type">Maybe</span> b
+    map f (<span class="hljs-type">Just</span> a) = <span class="hljs-type">Just</span> f a
+    map _ <span class="hljs-type">Nothing</span>  = <span class="hljs-type">Nothing</span>
+</code></pre>
+<p>We can define different versions of map for different types.
+This language feature is built into Haskell.
+And it let us declare a name for these <em>things-that-can-be-mapped</em>. In this case, Functor.</p>
+<p>Languages providing this feature call this <em>thing-you-can-create-an-instance-of</em>, a type class.
+And type classes are often used to create algebraic structures.
+What type classes do is enable a specific kind of polymorphism.
+That is, they let us use the same ‘function’ with different types.
+Even if we don’t know up front what those types might be.
+And that happens to be a convenient way to define algebraic structures.</p>
+<p>How do we declare a new type class? In Haskell, the definition for functor looks something like this</p>
+<pre><code class="hljs css language-Haskell"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Functor</span> f <span class="hljs-keyword">where</span></span>
+    map :: (a -&gt; b) -&gt; f a -&gt; f b
+</code></pre>
+<p>This code says we’re creating a new type class called ‘Functor’.
+And we use the shortcut 'f' to refer to it in type definitions.
+For something to qualify as a functor, it must have a map function.
+And that map function must follow the given type signature.
+That is, map takes two parameters.
+The first is a function that takes something of type a and returns something of type b.
+The second is a functor of type f with something of type a ‘inside’ it.
+Given these, map must return another functor of the same type f with something of type b ‘inside’ it.</p>
+<p>Here’s a shorter way to say it: This is a type class called functor.
+It has a map function. It does what you’d expect map to do.</p>
+<p>The important thing to understand is that it’s about polymorphism.
+This particular kind is called parametric polymorphism.
+Type classes let us have many functions with the same name.
+That is, so long as those functions handle different types.
+In practice, it allows us to think of all those map functions as if it were one single function.
+And the Functor definition makes sure that they all do logically similar tasks.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/shoonya-blog/docs/functional/algebraic_structure"><span class="arrow-prev">← </span><span>Algebraic Structure</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/shoonya-blog/" class="nav-home"><img src="/shoonya-blog/img/sidebar_brand2x.png" alt="Shoonya Blog"/></a><div><h5>GitHub</h5><a class="github-button" href="https://github.com/ksarath/shoonya-blog" data-icon="octicon-star" data-count-href="/ksarath/shoonya-blog/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div><h5>Chat with us on Discord</h5><a href="https://discord.gg/ksarath/shoonya-blog"><img src="/shoonya-blog/img/discord.png" width="120" alt="discord"/></a></div><div><h5>Additional resources</h5><a href="https://javadoc.io/doc/org.shoonya/shoonya-blog_2.13/">Scaladoc of Shoonya Blog</a></div></section><section class="copyright">Copyright © 2020 Shoonya Blog Maintainers</section></footer></div></body></html>
