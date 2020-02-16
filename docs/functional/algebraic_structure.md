@@ -26,7 +26,7 @@ It is a description or template for how to solve a problem that can be used in m
 ```
 
 Like design patterns, algebraic structures also represent templates for solving a problem. 
-Unlike design patterns though, algebraic structures have their basis is in mathematics.
+Unlike design patterns though, algebraic structures have their base in mathematics.
 This means that they tend to be more formally defined and more general. 
 
 Algebraic structures have specific laws that they must conform to.
