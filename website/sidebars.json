@@ -3,7 +3,8 @@
     "Overview": [
       "functional/functional_index",
       "functional/algebraic_structure",
-      "functional/type_classes"
+      "functional/type_classes",
+      "functional/algebraic_data_types"
     ]
   },
   "about-sidebar": {

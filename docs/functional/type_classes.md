@@ -75,3 +75,15 @@ Type classes let us have many functions with the same name.
 That is, so long as those functions handle different types. 
 In practice, it allows us to think of all those map functions as if it were one single function. 
 And the Functor definition makes sure that they all do logically similar tasks.
+
+***Summary***
+
+Type classes are a way of implementing polymorphism. 
+They’re used in statically typed languages like Haskell or PureScript. 
+They let you define functions with the same name but different type signatures. 
+They’re often used to implement algebraic structures. 
+So sometimes people use the terms interchangeably.
+
+***Reference (Original Post)***
+
+[James Sinclair - TYPE CLASSES: THINGS I WISH SOMEONE HAD EXPLAINED ABOUT FUNCTIONAL PROGRAMMING](https://jrsinclair.com/articles/2019/type-classes-what-i-wish-someone-had-explained-about-functional-programming/)

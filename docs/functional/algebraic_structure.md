@@ -48,3 +48,13 @@ Need a function that works with a value that we don’t have yet? No problem, st
 Need precise control over when side-effects happen? The same code will work in an Effect too. 
 Plus ‘free’ performance optimisations and other pre-written code. 
 Algebraic structures make all this possible.
+
+***Summary***
+
+Algebraic Structures are a bit like code design patterns. 
+Unlike design patterns though, they have a mathematical basis and are inter-related. 
+Hence why they’re called ‘algebraic’. 
+
+***Reference (Original Post)***
+
+[James Sinclair - ALGEBRAIC STRUCTURES: THINGS I WISH SOMEONE HAD EXPLAINED ABOUT FUNCTIONAL PROGRAMMING](https://jrsinclair.com/articles/2019/algebraic-structures-what-i-wish-someone-had-explained-about-functional-programming/)
