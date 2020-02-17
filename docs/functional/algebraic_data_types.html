@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Algebraic Data Types · Shoonya Blog</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**What is an Algebraic Data Type?**"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Algebraic Data Types · Shoonya Blog"/><meta property="og:type" content="website"/><meta property="og:url" content="https://ksarath.github.io/shoonya-blog/"/><meta property="og:description" content="**What is an Algebraic Data Type?**"/><meta property="og:image" content="https://ksarath.github.io/shoonya-blog/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://ksarath.github.io/shoonya-blog/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/shoonya-blog/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100,"cornerOffset":100}
+          )
+        });
+        </script><script src="/shoonya-blog/js/scrollSpy.js"></script><link rel="stylesheet" href="/shoonya-blog/css/main.css"/><script src="/shoonya-blog/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/shoonya-blog/"><img class="logo" src="/shoonya-blog/img/navbar_brand2x.png" alt="Shoonya Blog"/><h2 class="headerTitleWithLogo">Shoonya Blog</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/shoonya-blog/docs/main_index" target="_self">Index</a></li><li class=""><a href="/shoonya-blog/docs/about/about_index" target="_self">About</a></li><li class="siteNavGroupActive"><a href="/shoonya-blog/docs/functional/functional_index" target="_self">Functional Concepts</a></li><li class=""><a href="api/index.html" target="_self">API</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Overview</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Overview</h3><ul class=""><li class="navListItem"><a class="navItem" href="/shoonya-blog/docs/functional/functional_index">Functional Programming Concepts</a></li><li class="navListItem"><a class="navItem" href="/shoonya-blog/docs/functional/algebraic_structure">Algebraic Structure</a></li><li class="navListItem"><a class="navItem" href="/shoonya-blog/docs/functional/type_classes">Type Classes</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/shoonya-blog/docs/functional/algebraic_data_types">Algebraic Data Types</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Algebraic Data Types</h1></header><article><div><span><p><strong>What is an Algebraic Data Type?</strong></p>
+<p>An algebraic data type is a structured type that’s formed by composing other types.
+Or, even shorter, it’s a type made of other types.</p>
+<p><strong><em>Product Types</em></strong></p>
+<p>Product types allow you to have more than one value in a single structure, at the same time.
+Why do we call them product types? It’s all about the possibilities.
+We can calculate the number of possible values using multiplication.</p>
+<p><strong><em>Sum Types</em></strong></p>
+<p>Sum types are types where your value must be one of a fixed set of options.
+You may have seen enum types in languages like C# or Java.
+Sum types are similar, but more flexible.</p>
+<p>The Either is a sum type which can hold a Left or Right value, but never both at the same time.
+And it has functions that behave differently depending on which side the data lies.
+If we map over a Left, it does nothing.
+If we map over a Right, then we get a new Right with a (potentially) different value.</p>
+<p>What’s interesting here is that we can put any data we want in Either.
+We can put an array or an object (or whatever) in the Left or Right slots.
+So you might be wondering how this is any different from product types.
+And the difference is that with Either, the data must be inside either Left or Right.
+So, the data is always ‘tagged’ with a piece of information, encoded into the type.
+What the tag means is entirely up to us.
+For example, with Either, we might use the Left side to represent errors.
+If the data is inside Left, something has failed.
+If we’ve got a Right, then we’re still on the happy path.
+But they’re called Left and Right for a reason.
+We don’t have to make Left represent errors.
+It might represent something else.
+For example, we might decide that Right represents ‘logged in’.
+And the Left represents ‘unauthenticated.’ It’s entirely up to us what we use Either for.</p>
+<p>So, Either has two possible tags: Left or Right.
+But there’s no reason we can’t create a type that has more tags.
+For example, we could have a type that models directions for a game.
+We might create tags for North, South, East, and West.
+Or, in a front-end application we might define states for a UI widget loaded via network request.
+It might have states like Loading, Display, and LoadingError.</p>
+<p>That’s all fine. But why are they called sum types?
+Well, if the value can only be one of a fixed set of options, then we count the possible values using addition.
+For example, booleans are a sum type.
+They can be either true or false.
+Not both at the same time.
+And we count the values by addition 1 + 1 = 2.</p>
+<p><strong><em>Summary</em></strong></p>
+<p>Algebraic data types are not the same as algebraic structures.
+What are they? They’re composite data types made out of other types.
+There’s two main kinds of algebraic data types: Sum types and Product types.
+Together, they’re like a dynamic duo for encoding business logic.
+They help us make good things possible, and bad things impossible.</p>
+<p><strong><em>Reference (Original Post)</em></strong></p>
+<p><a href="https://jrsinclair.com/articles/2019/algebraic-data-types-what-i-wish-someone-had-explained-about-functional-programming/">James Sinclair - ALGEBRAIC DATA TYPES: THINGS I WISH SOMEONE HAD EXPLAINED ABOUT FUNCTIONAL PROGRAMMING</a></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/shoonya-blog/docs/functional/type_classes"><span class="arrow-prev">← </span><span>Type Classes</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/shoonya-blog/" class="nav-home"><img src="/shoonya-blog/img/sidebar_brand2x.png" alt="Shoonya Blog"/></a><div><h5>GitHub</h5><a class="github-button" href="https://github.com/ksarath/shoonya-blog" data-icon="octicon-star" data-count-href="/ksarath/shoonya-blog/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div><h5>Chat with us on Discord</h5><a href="https://discord.gg/ksarath/shoonya-blog"><img src="/shoonya-blog/img/discord.png" width="120" alt="discord"/></a></div><div><h5>Additional resources</h5><a href="https://javadoc.io/doc/org.shoonya/shoonya-blog_2.13/">Scaladoc of Shoonya Blog</a></div></section><section class="copyright">Copyright © 2020 Shoonya Blog Maintainers</section></footer></div></body></html>
